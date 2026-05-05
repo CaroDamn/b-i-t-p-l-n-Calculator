@@ -31,7 +31,7 @@ Xử lý các số thập phân hữu hạn bằng cách tách biệt phần ngu
 
 ---
 
-#### 3.Cấu trúc thư mục
+### 3.Cấu trúc thư mục
 ```text
 BTL1_Entity/
 ├── include/
