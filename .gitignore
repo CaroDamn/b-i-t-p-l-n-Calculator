@@ -17,7 +17,7 @@ calculator_btl2
 *.log
 *.toc
 *.gz
-*.pdf
+
 
 # Scripts tạm
 *.sh
