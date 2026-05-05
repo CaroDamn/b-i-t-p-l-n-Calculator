@@ -1,0 +1,23 @@
+# Biên dịch (Binaries)
+*.o
+*.out
+calculator_btl1
+calculator_btl2
+
+# macOS rác
+.DS_Store
+
+# IDEs & Editor
+.vscode/
+.idea/
+*.swp
+
+# LaTeX rác (Nếu soạn đề bằng LaTeX)
+*.aux
+*.log
+*.toc
+*.gz
+*.pdf
+
+# Scripts tạm
+*.sh
