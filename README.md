@@ -2,7 +2,7 @@
 
 Dự án này tập trung vào việc xây dựng các thực thể số học tùy chỉnh nhằm giải quyết triệt để vấn đề sai số làm tròn của các kiểu dữ liệu `float` và `double` trong C++.
 
-## 1. Class Fraction (Phân số)
+### 1. Class Fraction (Phân số)
 Được thiết kế để đảm bảo tính chính xác tuyệt đối cho các số hữu tỉ và các phép tính có kết quả là số thập phân vô hạn tuần hoàn.
 
 ### Cấu trúc dữ liệu
@@ -15,9 +15,8 @@ Dự án này tập trung vào việc xây dựng các thực thể số học t
 - **toString()**: Trả về chuỗi định dạng `a/b` hoặc `-a/b`.
 - **Operator Overloading**: Hỗ trợ đầy đủ các phép tính số học (+, -, *, /) và các phép so sánh (==, !=, <, >, <=, >=).
 
----
 
-## 2. Class AccuracyFloat (Số thực chính xác)
+### 2. Class AccuracyFloat (Số thực chính xác)
 Xử lý các số thập phân hữu hạn bằng cách tách biệt phần nguyên và phần thập phân, tránh việc làm tròn sai lệch của máy tính.
 
 ### Cấu trúc dữ liệu
@@ -32,7 +31,7 @@ Xử lý các số thập phân hữu hạn bằng cách tách biệt phần ngu
 
 ---
 
-## 3. Cấu trúc thư mục
+#### 3.Cấu trúc thư mục
 ```text
 BTL1_Entity/
 ├── include/
