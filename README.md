@@ -29,8 +29,6 @@ Xử lý các số thập phân hữu hạn bằng cách tách biệt phần ngu
 - **normalize()**: Tự động chuẩn hóa và xử lý phần dư/mượn giữa phần thập phân và phần nguyên.
 - **Operator Overloading**: Thực hiện tính toán trực tiếp trên các thành phần số nguyên, đảm bảo kết quả như tính toán trên giấy.
 
----
-
 ### 3.Cấu trúc thư mục
 ```text
 BTL1_Entity/
