@@ -2,7 +2,9 @@
 #define FRACTION_H
 
 #include <string>
+#include <bits/stdc++.h>
 
+using namespace std;
 class Fraction {
 private:
     long long num = 0;
@@ -12,6 +14,7 @@ private:
 public:
     Fraction(long long num, long long den, bool sign);
     Fraction(string input);
+    Fraction();
     void simplify();
     string toString();
     Fraction operator+(Fraction other);
@@ -22,6 +25,7 @@ public:
     bool operator=(Fraction other);
     bool operator>(Fraction other);
     bool operator<(Fraction other);
+    bool getsign();
 };
 
 #endif
