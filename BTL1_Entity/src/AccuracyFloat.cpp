@@ -80,5 +80,46 @@ double AccuracyFloat::toDouble(){
     return tuT;
 }
 AccuracyFloat AccuracyFloat::operator+(AccuracyFloat other){
-    
+    long long t;
+    long long b;
+    bool c;
+    if (this -> sign == other.sign){
+        t = this-> num + other.num;
+        if (this-> pre > other.pre){
+            b = this-> dec + other.dec *(this -> pre / other.pre);
+            if (b > this -> pre){
+                b -= this -> pre;
+                ++t;
+                
+            }
+            return {t, b, this-> pre, this -> sign};
+        }
+    b = other.dec + this -> dec * (other.pre / this-> pre);
+    if (b > other.pre){
+        b -= other.pre;
+        ++t;
+    }
+    return {t, b, other.pre, this -> sign};
+    }
+    t = abs(this -> num - other.num);
+    if (this -> num > other.num){
+        c = this-> sign;
+    }else if (other.num > this-> num){
+        c = other.sign;
+    }else{
+        if (this-> pre > other.pre){
+            if (this -> dec > other.dec *( this -> pre / other.pre)){
+                c = this -> sign;
+            }else{
+                c = other.sign;
+            }
+        }else{
+            if (other.dec > this -> dec *(other.pre / this -> pre)){
+                c = other.sign;
+            }else{
+                c = this-> sign;
+            }
+        }
+    }
+    b = this -> dec / this -> pre - other.dec / other.pre;
 }
