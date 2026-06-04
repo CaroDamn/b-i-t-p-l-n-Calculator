@@ -39,6 +39,11 @@ Fraction::Fraction(string input){
          this -> den = den * 10 + c;
         i += 1;
         }
+    if (this -> num == 0){
+        this -> num = 0;
+        this -> den = 1;
+        this -> sign = 0;
+    }
     }
 long long Uoc(long long a, long long b){
     int t = 0;
@@ -71,9 +76,13 @@ bool Fraction::getsign(){
 }
 string intToString(long long a){
     string t;
-    while(a > 0){
+    if (a == 0){
+        t = "0";
+    }else {
+        while(a > 0){
         t += a%10 + '0';
         a /= 10;
+        }
     }
     reverse(t.begin(), t.end());
     return t;
@@ -94,19 +103,17 @@ Fraction Fraction::operator+(Fraction other){
     long long dau;
     if (this -> den > other.den){
         i = this -> den;
-        while(i % other.den == 0 && i % this -> den == 0){
+        while(i % other.den != 0 && i % this -> den != 0){
             ++i;
         }
     }else{
          i = other.den;
-        while(i % other.den == 0 && i % this -> den == 0){
+        while(i % other.den != 0 && i % this -> den != 0){
             ++i;
         }
     }
     this -> num = (i / this -> den) * this -> num;
-    other.num = (i / other.den) * other.den;
-    Fraction kq;
-
+    other.num = (i / other.den) * other.num;
     if (this -> sign == other.sign){
        t = this -> num + other.num;
        dau = other.sign;
@@ -122,19 +129,31 @@ Fraction Fraction::operator+(Fraction other){
     return Fraction (t, i, dau);
 } 
 Fraction Fraction::operator-(Fraction other){
-    other.sign = !other.sign;
+   
+    other.sign = !(other.sign);
+
     return *this + other;
 }
 Fraction Fraction::operator*(Fraction other){
     long long i = this -> num * other.num;
     long long t = this -> den * other.den;
-    long long dau = !(this -> sign && other.sign);
+    bool dau;
+    if (this -> sign == other.sign){
+        dau = 0;
+    }else {
+        dau = 1;
+    }
     return Fraction (i,t,dau);
 }
 Fraction Fraction::operator/(Fraction other){
     long long i = this -> num * other.den;
     long long t = this -> den * other.num;
-    long long dau = !(this -> sign && other.sign);
+    bool dau;
+    if (this -> sign == other.sign){
+        dau = 0;
+    }else {
+        dau = 1;
+    }
     return Fraction (i, t, dau);
 }
 bool Fraction::operator==(Fraction other){

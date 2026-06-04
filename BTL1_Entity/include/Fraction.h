@@ -8,7 +8,7 @@ using namespace std;
 class Fraction {
 private:
     long long num = 0;
-    long long den = 1;
+    long long den = 0;
     bool sign = 0;
 
 public:
