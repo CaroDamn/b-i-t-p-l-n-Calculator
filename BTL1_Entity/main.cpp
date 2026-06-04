@@ -194,11 +194,11 @@ void testAccuracyFloat() {
 int main() {
     cout << "BẮT ĐẦU CHẠY UNIT TEST CHO BÀI TẬP LỚN..." << endl;
     
-//    testFraction();
-//    cout << "\nKết quả Fraction: " << fractionPassCount << " / " << fractionTotalCount << " Passed.\n";
+    testFraction();
+    cout << "\nKết quả Fraction: " << fractionPassCount << " / " << fractionTotalCount << " Passed.\n";
 
-//    testAccuracyFloat();
-//    cout << "\nKết quả AccuracyFloat: " << floatPassCount << " / " << floatTotalCount << " Passed.\n";
+    testAccuracyFloat();
+    cout << "\nKết quả AccuracyFloat: " << floatPassCount << " / " << floatTotalCount << " Passed.\n";
 
 //       << (fractionPassCount + floatPassCount) << " / " 
 //       << (fractionTotalCount + floatTotalCount) << " Passed." << endl;

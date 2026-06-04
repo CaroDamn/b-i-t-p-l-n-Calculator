@@ -11,6 +11,13 @@ Fraction::Fraction(long long num, long long den, bool sign){
         this -> sign = sign;
     }
 }
+
+Fraction::Fraction(){
+    num = 0;
+    den = 1;
+    sign = 0;
+};
+
 Fraction::Fraction(string input){
     int i;
     int c;
@@ -27,7 +34,7 @@ Fraction::Fraction(string input){
         i += 1;
         }
         i += 1;
-    while(input[i] != '/0'){
+    while(input[i] != '\0'){
         c = (input[i] - '0');
          this -> den = den * 10 + c;
         i += 1;

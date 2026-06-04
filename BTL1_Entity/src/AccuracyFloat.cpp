@@ -1,5 +1,5 @@
 #include "../include/AccuracyFloat.h"
-
+#include <sstream>
 AccuracyFloat::AccuracyFloat(long long num, long long dec, long long pre, bool sign){
     this -> num = num;
     this -> dec = dec;
@@ -23,7 +23,7 @@ AccuracyFloat::AccuracyFloat(string input){
         }
         i += 1;
         this -> dec = input[i];
-        while (input[i] != '/0'){
+        while (input[i] != '\0'){
             this -> dec = this -> dec * 10 + (long long)(input[i] - '0');
             this -> pre *= 10;
             ++i;
@@ -87,7 +87,7 @@ AccuracyFloat AccuracyFloat::operator+(AccuracyFloat other){
     int m = 0;
     while (c > 0){
         ++m;
-        c / 10;
+        c /= 10;
     }
     ostringstream t;
     t << fixed << setprecision(m) << a;
@@ -101,7 +101,7 @@ AccuracyFloat AccuracyFloat::operator-(AccuracyFloat other){
     int m = 0;
     while (c >0){
         ++m;
-        c / 10;
+        c /= 10;
     }
     ostringstream t;
     t << fixed << setprecision(m) << a;
@@ -115,7 +115,7 @@ AccuracyFloat AccuracyFloat::operator*(AccuracyFloat other){
     int m = 0;
     while (c > 0){
         ++m;
-        c / 10;
+        c /= 10;
     }
     ostringstream t;
     t << fixed << setprecision(m) << a;
@@ -129,7 +129,7 @@ AccuracyFloat AccuracyFloat::operator/(AccuracyFloat other){
     int m = 0;
     while(c > 0){
         ++m;
-        c / 10;
+        c /= 10;
     }
     ostringstream t;
     t << fixed << setprecision(m) << a;
