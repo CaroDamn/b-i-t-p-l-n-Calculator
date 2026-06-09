@@ -134,8 +134,8 @@ void testAccuracyFloat() {
     }
 
     // Khởi tạo từ constructor đầy đủ
-    AccuracyFloat af1(12, 345, 3, false); // 12.345
-    runStringTest("AccuracyFloat Constructor(full)", "12, 345, 3, false", "12.345", af1.toString(), floatPassCount, floatTotalCount);
+    AccuracyFloat af1(12, 345, 1000, false); // 12.345
+    runStringTest("AccuracyFloat Constructor(full)", "12, 345, 1000, false", "12.345", af1.toString(), floatPassCount, floatTotalCount);
     
     // Khởi tạo từ double
     AccuracyFloat af2(3.1415);
@@ -151,6 +151,7 @@ void testAccuracyFloat() {
     // 2. Test Phép toán số học (+, -, *, /) (40 cases)
     for (int i = 1; i <= 10; i++) {
         string strA = to_string(i) + ".5";
+     
         string strB = "1.2";
         AccuracyFloat a(strA);
         AccuracyFloat b(strB);
@@ -162,7 +163,7 @@ void testAccuracyFloat() {
         
         // Phép trừ
         AccuracyFloat subRes = a - b;
-        double expectedSub = i + 0.3;
+        double expectedSub = i-1 + 0.3;
         runTest("AccuracyFloat Subtraction " + to_string(i), strA + " - " + strB, true, abs(subRes.toDouble() - expectedSub) < 1e-9, floatPassCount, floatTotalCount);
         
         // Phép nhân
@@ -196,14 +197,11 @@ void testAccuracyFloat() {
 int main() {
     cout << "BẮT ĐẦU CHẠY UNIT TEST CHO BÀI TẬP LỚN..." << endl;
     
-    testFraction();
-    cout << "\nKết quả Fraction: " << fractionPassCount << " / " << fractionTotalCount << " Passed.\n";
+   // testFraction();
+    // cout << "\nKết quả Fraction: " << fractionPassCount << " / " << fractionTotalCount << " Passed.\n";
 
-   // testAccuracyFloat();
-  //  cout << "\nKết quả AccuracyFloat: " << floatPassCount << " / " << floatTotalCount << " Passed.\n";
-
-//       << (fractionPassCount + floatPassCount) << " / " 
-//       << (fractionTotalCount + floatTotalCount) << " Passed." << endl;
+    testAccuracyFloat();
+    cout << "\nKết quả AccuracyFloat: " << floatPassCount << " / " << floatTotalCount << " Passed.\n";
 
     return 0;
 }

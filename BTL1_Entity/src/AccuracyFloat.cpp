@@ -5,6 +5,7 @@ AccuracyFloat::AccuracyFloat(long long num, long long dec, long long pre, bool s
     this -> dec = dec;
     this -> pre = pre;
     this -> sign = sign;
+
 }
 AccuracyFloat::AccuracyFloat(string input){
     int i;
@@ -22,7 +23,7 @@ AccuracyFloat::AccuracyFloat(string input){
             ++i;
         }
         i += 1;
-        this -> dec = input[i];
+        this -> dec = input[i++] - '0';
         while (input[i] != '\0'){
             this -> dec = this -> dec * 10 + (long long)(input[i] - '0');
             this -> pre *= 10;
@@ -38,7 +39,7 @@ AccuracyFloat::AccuracyFloat(double input){
     }
     this -> pre = 1000000;
     t = input - t;
-    while (t % 10 != 0){
+    while (t % 10 == 0){
         t /= 10;
         this -> pre /= 10;
     }
@@ -51,12 +52,17 @@ AccuracyFloat::AccuracyFloat(double input){
 }
 string AccuracyFloat::toString(){
     string t = "";
+    int e = num;
+    if (num == 0){
+        t += num + '0';
+    }else {
+        while (e != 0){
+        t += (e % 10) + '0';
+        e /= 10;
+        } 
+    }
     if (sign == 1){
         t += '-';
-    }
-    while (num != 0){
-        t += (num % 10) + '0';
-        num /= 10;
     }
     reverse(t.begin(), t.end());
     t += '.';
@@ -64,16 +70,17 @@ string AccuracyFloat::toString(){
     string m = "";
     while (c != 1){
         m += (c % 10) + '0';
-        c /= 10;
+        c /= 10;  
     }
     reverse(m.begin(), m.end());
     t += m;
     return t;
+
 }
 double AccuracyFloat::toDouble(){
     double tuT = num;
-    dec /= pre;
-    tuT += dec;
+    double t = (double)dec / pre ;
+    tuT += t;
     if (sign == 1){
         tuT *= -1;
     }
@@ -85,6 +92,7 @@ AccuracyFloat AccuracyFloat::operator+(AccuracyFloat other){
     a += b;
     long long c = max(this -> pre, other.pre);
     int m = 0;
+
     while (c > 0){
         ++m;
         c /= 10;
@@ -96,9 +104,11 @@ AccuracyFloat AccuracyFloat::operator+(AccuracyFloat other){
 AccuracyFloat AccuracyFloat::operator-(AccuracyFloat other){
     double a = stold((this -> toString()));
     double b = stold((other.toString()));
+  
     a -= b;
     long long c = max(this-> pre, other.pre);
     int m = 0;
+
     while (c >0){
         ++m;
         c /= 10;
@@ -149,20 +159,9 @@ bool AccuracyFloat::operator=(AccuracyFloat other){
     return 1;
 }
 bool AccuracyFloat::operator>(AccuracyFloat other){
-    if (this -> sign != other.sign){
-        return (!(this-> sign));
-    }else{
-        if (this -> sign){
-            if (this-> num < other.num || (double)(this -> dec) / this -> pre < (double)(other.dec) / other.pre){
-                return 1;
-            }
-        }else{
-            if (this-> num > other.num || (double)(this -> dec) / this -> pre > (double)(other.dec) / other.pre){
-                return 1;
-            }
-        }
-    }
-    return 0;
+    double a = stold((this-> toString()));
+    double b = stold((other.toString()));
+    return a > b;
 }
 bool AccuracyFloat::operator<(AccuracyFloat other){
     return !(*this > other);
